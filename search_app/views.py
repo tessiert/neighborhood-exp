@@ -56,6 +56,7 @@ class SearchView(View):
                 declutter = "true"
             else:
                 declutter = "false"
+            request.session["declutter"] = declutter
 
             places_URL = "https://www.mapquestapi.com/search/v4/place?key={map_key}&circle={lon},{lat},{rad}&q={search_term}&sort={sort_method}".format(
                 map_key=MAP_KEY,
@@ -117,6 +118,7 @@ class SearchView(View):
                 "poi_start_val": request.session["point_of_interest"],
                 "radius_start_val": request.session["radius"],
                 "sort_start_val": request.session["sort_method"],
+                "declutter_start_val": request.session["declutter"],
                 "anchor": "poi_anchor",
             }
             return render(request, template_name="pages/search.html", context=context)
@@ -221,6 +223,7 @@ class SearchView(View):
             "poi_start_val": "",
             "radius_start_val": "",
             "sort_start_val": "",
+            "declutter_start_val": request.session["declutter"],
         }
 
         return render(request, template_name="pages/search.html", context=context)

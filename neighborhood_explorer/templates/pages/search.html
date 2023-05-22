@@ -109,9 +109,14 @@
                         </script>
                     </div>
                     <div style="text-align:center;padding:10px 0 25px 0">
-                        <!-- if checked, True will be returned. If unchecked
+                        <!-- if checked, a value will be returned. If unchecked
                              nothing is returned. -->
-                        <input type="checkbox" name="declutter" value="True"> Declutter Map Markers <br>
+                        <label for="declutter">
+                            <input type="checkbox" id="declutter" name="declutter"> Declutter Map Markers <br>
+                        </label>
+                        <script>
+                            document.getElementById('declutter').checked = {{ declutter_start_val }}
+                        </script>
                     </div>
                     <div style="text-align:center">
                         <!-- Pass all address data back to view to avoid
