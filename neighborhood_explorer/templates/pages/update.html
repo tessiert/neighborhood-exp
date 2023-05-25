@@ -1,0 +1,109 @@
+<!-- HTML to do a partial update of the map of and links to any points of interest found -->
+<div id="poi_section">
+    <table id="search_tbl" align="center" style="border-collapse:separate;border-spacing:20px 20px;">
+        <tr id="poi_row">
+            <td style="vertical-align:top;width:200px;">
+                <form id="poi_form" action="" method='POST'>
+                    {% csrf_token %}
+                    <select id="point_of_interest" name="point_of_interest" required style="width:200px;" hx-validate="true">
+                        <option value="" selected disabled hidden>Point of Interest</option>
+                        <!-- Return query string for place search -->
+                        <option value="aquarium zoo">Aquariums/Zoos</option>
+                        <option value="campground">Campgrounds</option>
+                        <option value="cinema">Movie Theaters</option>
+                        <option value="museum">Museums</option>
+                        <option value="performing arts">Performing Arts</option>
+                        <option value="nature park">Parks/Nature Preserves</option>
+                        <option value="amusement">Recreation</option>
+                        <option value="cafe">Restaurants/Cafés</option>
+                        <option value="school">Schools</option>
+                    </select>
+                    <script>
+                        setSelectedIndex(document.getElementById('point_of_interest'), '{{ poi_start_val }}');
+                    </script>
+                    <div style="text-align:right;padding:10px 0 0 0">
+                        <select id="radius" name="radius" required style="width:200px;">
+                            <option value="" selected disabled hidden>Search Distance</option>
+                            <!-- Return mileage in meters -->
+                            <option value="3219">2 miles/3 km</option>
+                            <option value="8047">5 miles/8 km</option>
+                            <option value="16093">10 miles/16 km</option>
+                            <option value="40234">25 miles/40 km</option>
+                        </select>
+                        <script>
+                            setSelectedIndex(document.getElementById('radius'), '{{ radius_start_val }}');
+                        </script>
+                    </div>
+                    <div style="text-align:right;padding:10px 0 0 0">
+                        <select id="sort_method" name="sort_method" required style="width:200px;">
+                            <option value="" selected disabled hidden>Sort Method</option>
+                            <option value="relevance">Relevance</option>
+                            <option value="distance">Distance</option>
+                        </select>
+                        <script>
+                            setSelectedIndex(document.getElementById('sort_method'), '{{ sort_start_val }}');
+                        </script>
+                    </div>
+                    <div style="text-align:center;padding:10px 0 25px 0">
+                        <!-- if checked, a value will be returned. If unchecked
+                            nothing is returned. -->
+                        <label for="declutter">
+                            <input type="checkbox" id="declutter" name="declutter"> Declutter Map Markers <br>
+                        </label>
+                        <script>
+                            document.getElementById('declutter').checked = {{ declutter_start_val }}
+                        </script>
+                    </div>
+                    <div style="text-align:center">
+                        <!-- Pass all address data back to view to avoid
+                            retreiving it again -->
+                        <input type="hidden" name="address" value="{{ formatted_address }}">
+                        <input type="hidden" name="latitude" value="{{ latitude }}">
+                        <input type="hidden" name="longitude" value="{{ longitude }}">
+                        <input type="hidden" name="temperature" value="{{ temperature }}">
+                        <input type="hidden" name="summary" value="{{ summary }}">
+                        <input name="poi_search" type="button" hx-post="/update/" hx-target="#poi_section" value="Submit">
+                    </div>
+                </form>
+            </td>
+            <td style="vertical-align:top;">
+                <img src={{ map_url }} alt="Map showing points of interest" id="poi_map" style="width:520px;height:400px;">
+            </td>
+            <td style="vertical-align:top;width:200px;height:400px;">
+                <div style="width:200px;height:400px;border:1px solid black;padding:5px;overflow-y:scroll;font-family:arial;font-size:18px;">
+                    {% for cur_poi in poi_info %}
+                        {% if cur_poi.link != '' %}
+                            <p>
+                                {{ forloop.counter }}. <a target="_blank" style="color: dark blue;" href="https://www.google.com/maps/search/?api=1&query={{ cur_poi.link }}">{{ cur_poi.description }}</a>
+                            </p>
+                        {% else %}
+                            <p>
+                                {{ cur_poi.description }}
+                            </p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<!-- <div id="poi_section">
+    <td style="vertical-align:top;">
+        <img src={{ map_url }} alt="Map showing points of interest" id="poi_map" style="width:520px;height:400px;">
+    </td>
+    <td style="vertical-align:top;width:200px;height:400px;">
+        <div style="width:200px;height:400px;border:1px solid black;padding:5px;overflow-y:scroll;font-family:arial;font-size:18px;">
+            {% for cur_poi in poi_info %}
+                {% if cur_poi.link != '' %}
+                    <p>
+                        {{ forloop.counter }}. <a target="_blank" style="color: dark blue;" href="https://www.google.com/maps/search/?api=1&query={{ cur_poi.link }}">{{ cur_poi.description }}</a>
+                    </p>
+                {% else %}
+                    <p>
+                        {{ cur_poi.description }}
+                    </p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </td>
+</div> -->

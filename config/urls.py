@@ -6,7 +6,7 @@ from django.views import defaults as default_views
 from django.views.generic import TemplateView
 
 from home_app.views import HomeView
-from search_app.views import SearchView
+from search_app.views import SearchView, UpdateView
 
 urlpatterns = [
     path("", HomeView.as_view(), name="home"),
@@ -26,6 +26,7 @@ urlpatterns = [
     # Your stuff: custom urls includes go here
     path("search/", SearchView.as_view(), name="search"),
     path("search/<str:address>/", SearchView.as_view(), name="top_search"),
+    path("update/", UpdateView.as_view(), name="update"),
     path(
         "contact/",
         TemplateView.as_view(template_name="pages/contact.html"),
