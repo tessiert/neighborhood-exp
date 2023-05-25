@@ -70,7 +70,7 @@
                 <td style="vertical-align:top;width:200px;">
                     <form id="poi_form" action="">
                         {% csrf_token %}
-                        <select id="point_of_interest" name="point_of_interest" required style="width:200px;">
+                        <select id="point_of_interest" name="point_of_interest" class="poi_menu" required style="width:200px;">
                             <option value="" selected disabled hidden>Point of Interest</option>
                             <!-- Return query string for place search -->
                             <option value="aquarium zoo">Aquariums/Zoos</option>
@@ -87,7 +87,7 @@
                             setSelectedIndex(document.getElementById('point_of_interest'), '{{ poi_start_val }}');
                         </script>
                         <div style="text-align:right;padding:10px 0 0 0">
-                            <select id="radius" name="radius" required style="width:200px;">
+                            <select id="radius" name="radius" class="poi_menu" required style="width:200px;">
                                 <option value="" selected disabled hidden>Search Distance</option>
                                 <!-- Return mileage in meters -->
                                 <option value="3219">2 miles/3 km</option>
@@ -100,7 +100,7 @@
                             </script>
                         </div>
                         <div style="text-align:right;padding:10px 0 0 0">
-                            <select id="sort_method" name="sort_method" required style="width:200px;">
+                            <select id="sort_method" name="sort_method" class="poi_menu" required style="width:200px;">
                                 <option value="" selected disabled hidden>Sort Method</option>
                                 <option value="relevance">Relevance</option>
                                 <option value="distance">Distance</option>
@@ -127,7 +127,7 @@
                             <input type="hidden" name="longitude" value="{{ longitude }}">
                             <input type="hidden" name="temperature" value="{{ temperature }}">
                             <input type="hidden" name="summary" value="{{ summary }}">
-                            <input name="poi_search" type="button" hx-post="/update/" hx-target="#poi_section" value="Submit">
+                            <input name="poi_search" id="poi_submit" type="button" hx-post="/update/" hx-target="#poi_section" disabled="disabled" value="Submit">
                         </div>
                     </form>
                 </td>
