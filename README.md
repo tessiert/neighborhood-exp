@@ -2,4 +2,4 @@
 
 This site represents my final project
 for the RMOTR "Web Development with Python and Django" 
-bootcamp.  
+bootcamp. 
