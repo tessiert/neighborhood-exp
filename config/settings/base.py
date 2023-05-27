@@ -18,8 +18,6 @@ if READ_DOT_ENV_FILE:
 # Environment variables
 MAP_KEY = env("MAP_KEY")
 WEATHER_KEY = env("WEATHER_KEY")
-DB_USER = env("DB_USER")
-PASSWORD = env("PASSWORD")
 
 # GENERAL
 # ------------------------------------------------------------------------------
@@ -44,13 +42,11 @@ LOCALE_PATHS = [str(BASE_DIR / "locale")]
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
-
 DATABASES = {
     "default": env.db("DATABASE_URL", default="postgres:///neighborhood_explorer"),
 }
-DATABASES["default"]["USER"] = DB_USER
-DATABASES["default"]["PASSWORD"] = PASSWORD
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
+
 # https://docs.djangoproject.com/en/stable/ref/settings/#std:setting-DEFAULT_AUTO_FIELD
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
