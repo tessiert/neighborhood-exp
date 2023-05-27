@@ -126,6 +126,14 @@ class SearchView(View):
 
         # Select appropriate map zoom level based on search radius (in meters)
         map_zoom = {"3219": "11", "8047": "10", "16093": "9", "40234": "8"}
+        
+        # If declutter is checked, it will return a value, otherwise no
+        # return value.  Input to mapper must be a 'boolean' text string.
+        if request.POST.get("declutter"):
+            declutter = "true"
+        else:
+            declutter = "false"
+        request.session["declutter"] = declutter
 
         # If user is doing a POI search, we've already pulled the geolocation
         # data.
@@ -137,13 +145,6 @@ class SearchView(View):
             request.session["point_of_interest"] = request.POST.get("point_of_interest")
             request.session["radius"] = request.POST.get("radius")
             request.session["sort_method"] = request.POST.get("sort_method")
-            # If declutter is checked, it will return a value, otherwise no
-            # return value.  Input to mapper must be a 'boolean' text string.
-            if request.POST.get("declutter"):
-                declutter = "true"
-            else:
-                declutter = "false"
-            request.session["declutter"] = declutter
 
             places_URL = "https://www.mapquestapi.com/search/v4/place?key={map_key}&circle={lon},{lat},{rad}&q={search_term}&sort={sort_method}".format(
                 map_key=MAP_KEY,
