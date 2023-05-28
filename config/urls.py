@@ -5,7 +5,7 @@ from django.urls import include, path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
 
-from home_app.views import HomeView
+from home_app.views import HomeView, home_view
 from search_app.views import SearchView, UpdateView
 
 urlpatterns = [

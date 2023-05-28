@@ -249,10 +249,11 @@ class SearchView(View):
 
         # If the current search is being done at least at city level accuracy,
         # update count of, or add new record to top searches database
-        try:
-            city_search = Searches.objects.get(city=city, state=state)
+        try:       
+            new_search = Searches()    
+            city_search = new_search.__class__.objects.get(city=city, state=state)
             city_search.count += 1
-        except Searches.DoesNotExist:
+        except new_search.DoesNotExist:
             city_search = Searches(city=city, state=state, count=1)
         city_search.save()
 
