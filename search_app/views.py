@@ -299,7 +299,7 @@ class SearchView(View):
             MAP_KEY, latitude, longitude, latitude, longitude
         )
 
-        poi_info = [{"description": "Links for top matches will appear here.", "link": ""}]
+        poi_info = [{"description": "Links for matched locations will appear here.", "link": ""}]
 
         context = {
             "formatted_address": formatted_address,
