@@ -1,3 +1,8 @@
+/* Modify the background color of the Navigation menu */
+.navbar {
+    background-color: burlywood;
+}
+
 .alert-debug {
   color: black;
   background-color: white;

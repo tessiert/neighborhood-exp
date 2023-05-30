@@ -4,13 +4,13 @@
 {% load crispy_forms_tags %}
 
 {% block lower_title %}
-    <h1 style="padding: 1em 0 0 0;">Top Five Cities Searched</h1>
+    <h2 style="padding: 1em 0 0 0;">Top Five Cities Searched</h2>
     <hr style="height:1px;border:none;color:#333;background-color:#333;" />
 {% endblock lower_title %}
 
 {% block lower_content %}
     <div style="text-align:center;">
-        <ol style="display: inline-block; text-align:left;font-size:2em;">
+        <ol style="display: inline-block; text-align:left;font-size:24px;">
             {% for cur_search in top_searches %}
                 <li>
                     <a href="search/{{ cur_search.city }},{{ cur_search.state }}/">
