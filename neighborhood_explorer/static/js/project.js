@@ -18,14 +18,5 @@ $(document).ready(function() {
     else {
       $('#poi_submit').prop('disabled', false);
     }
-    // alert($('#point_of_interest').val());
-    // if(
-    //   ($('#point_of_interest').val() != "") && 
-    //   ($('#radius').val() != "") &&
-    //   ($('#sort_method').val() != "")) {
-    //     $('#poi_submit').prop('disabled', false);
-    // } else {
-    //     $('#poi_submit').prop('disabled', true);
-    // }
   });
 });
