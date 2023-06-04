@@ -6,7 +6,7 @@ A web app to explore key features of U.S. neighborhoods
 This site represents my final project
 for the RMOTR "Web Development with Python and Django" 
 bootcamp.  The current state of the project can be accessed at
-https://neighborhood-explorer.herokuapp.com.  It enables a user to enter some or all of a U.S. address, and then 
+https://neighborhood-explorer.com.  It enables a user to enter some or all of a U.S. address, and then 
 retrieves and displays information about the given location - a three-day 
 weather forecast and a map and drop-down selection mechanism for the exploration 
 of attractions and other points of interest in the area.  
@@ -19,7 +19,7 @@ Mapquest Static Map API with location markers, as well as to retrieve and displa
 associated textual information.
 
 This site also provides its own API endpoint at 
-http://Neighborhood-Explorer.herokuapp.com/api/
+http://Neighborhood-Explorer.com/api/
 which allows GET requests,
 and will return JSON containing information on how many times each City/State
 combination in the database (PostgreSQL is used) has been searched.  It is this 
