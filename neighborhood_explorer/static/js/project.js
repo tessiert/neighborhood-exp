@@ -8,6 +8,8 @@ $(document).ready(function () {
     .addClass('active');
 });
 
+
+
 // Require valid search criteria to enable 'Submit' button for POI search
 $(document).ready(function() {
   $('.poi_menu').on('input change', function() {
