@@ -1,8 +1,4 @@
-/* Modify the background color of the Navigation menu */
-.navbar {
-    background-color: burlywood;
-}
-
+/*  Debugging */
 .alert-debug {
   color: black;
   background-color: white;
@@ -15,6 +11,47 @@
   border-color: #eed3d7;
 }
 
+
+/* Navigation Bar */
+.navbar {
+    background-color: burlywood;
+}
+
 .buttonHolder {
   text-align: center;
+}
+
+
+/*  base.html */
+body {
+  background-color: antiquewhite;  
+}
+
+
+/* home.html */
+.city_search_header { 
+  display: block;
+  font-size: 2em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 1em 0 0 0;
+}
+
+.city_search_hr {
+  height: 1px;
+  border: none;
+  color: #333;
+  background-color: #333; 
+}
+
+.city_search_div {
+  text-align: center;
+}
+
+.city_search_list {
+  display: inline-block; 
+  text-align: left;
+  font-size: 24px;
 }
