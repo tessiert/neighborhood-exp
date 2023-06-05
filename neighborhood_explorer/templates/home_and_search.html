@@ -5,7 +5,7 @@
 
 {% block content %}
     <!-- Address Search Form -->
-    <form action="{% url 'search' %}" method='POST' style="padding: 2em 0 0 0;">
+    <form class="address_search_form" action="{% url 'search' %}" method='POST'>
         {% csrf_token %}
         <!-- Search Form -->
         <div class="buttonHolder">

@@ -12,20 +12,28 @@
 }
 
 
+
 /* Navigation Bar */
 .navbar {
     background-color: burlywood;
 }
 
+/* home_and_search.html */
 .buttonHolder {
   text-align: center;
 }
+
+.address_search_form {
+  padding: 2em 0 0 0;
+}
+
 
 
 /*  base.html */
 body {
   background-color: antiquewhite;  
 }
+
 
 
 /* home.html */
