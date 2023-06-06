@@ -11,15 +11,7 @@ from config.settings.base import MAP_KEY, WEATHER_KEY
 # Select appropriate map zoom level based on search radius (in meters)
 map_zoom = {"3219": "11", "8047": "10", "16093": "9", "40234": "8"}
 
-def poi_search(request):
-    # If declutter is checked, it will return a value, otherwise no
-    # return value.  Input to mapper must be a 'boolean' text string.
-    if request.POST.get("declutter"):
-        declutter = "true"
-    else:
-        declutter = "false"
-    request.session["declutter"] = declutter
-    
+def poi_search(request):  
     # Since user is doing a POI search, we've already pulled the geolocation
     # data.
     address = request.POST.get("address")
@@ -138,6 +130,14 @@ class SearchView(View):
     def post(self, request, address=""):
         DAY_FORMAT = "%A,"
         DATE_FORMAT = "%b. %d"
+        
+        # If declutter is checked, it will return a value, otherwise no
+        # return value.  Input to mapper must be a 'boolean' text string.
+        if request.POST.get("declutter"):
+            declutter = "true"
+        else:
+            declutter = "false"
+        request.session["declutter"] = declutter
         
         if request.POST.get("poi_search"):
             request, template, context, status = poi_search(request)
