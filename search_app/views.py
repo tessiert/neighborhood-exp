@@ -9,7 +9,7 @@ from api.models import Searches
 from config.settings.base import MAP_KEY, WEATHER_KEY
 
 # Select appropriate map zoom level based on search radius (in meters)
-map_zoom = {"3219": "12", "8047": "11", "16093": "10", "40234": "9"}
+map_zoom = {"3219": "11", "8047": "10", "16093": "9", "40234": "8"}
 
 def poi_search(request):
     # If declutter is checked, it will return a value, otherwise no
